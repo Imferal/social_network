@@ -1,0 +1,32 @@
+@import "./../../scss/mixins";
+@import "./../../scss/variables";
+
+.navPanel {
+    @include panel;
+
+    grid-column: 1;
+    grid-row: 1;
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        color: $TEXT_PRIMARY;
+
+        text-transform: uppercase;
+
+        &_active {
+            color: $TEXT_THIRD;
+        }
+    }
+
+    &__link {
+        color: inherit;
+
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

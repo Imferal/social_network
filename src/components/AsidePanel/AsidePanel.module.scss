@@ -1,0 +1,13 @@
+@import "./../../scss/mixins";
+@import "./../../scss/variables";
+
+.asidePanel__wrapper {
+    @include panel;
+
+    grid-column: 3;
+    grid-row: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
