@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./mixins";
+@import "./fonts";
 
 :root {
     box-sizing: border-box;
@@ -14,5 +15,15 @@
 }
 
 body {
+    font-family: "YanoneKaffeesatz", sans-serif;
     background-color: $BACKGROUND;
+}
+
+h2 {
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    padding: 0.8rem;
 }

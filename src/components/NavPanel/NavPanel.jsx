@@ -6,11 +6,15 @@ export default class NavPanel extends React.Component {
 
     render() {
         return <section className={s.navPanel}>
-            {/* <h2 className={s.navPanel__content}>Это панель навигации</h2> */}
-            <nav>
+            <h2>Навигация</h2>
+            <nav className={s.navPanel__menu}>
                 <ul className={s.navPanel__list}>
-                    <li className={`${s.navPanel__item} ${s.navPanel__item_active}`}><NavLink className={s.navPanel__link} to="/profile">Профиль</NavLink></li>
-                    <li className={s.navPanel__item}><NavLink className={s.navPanel__link} to="/dialogs">Диалоги</NavLink></li>
+                    <li className={`${s.navPanel__item} ${s.navPanel__item_indent}`}>
+                        <NavLink className={s.navPanel__link} to="/profile" activeClassName={s.navPanel__link_active}>Профиль</NavLink>
+                    </li>
+                    <li className={`${s.navPanel__item} ${s.navPanel__item_indent}`}>
+                        <NavLink className={s.navPanel__link} to="/dialogs" activeClassName={s.navPanel__link_active}>Диалоги</NavLink>
+                    </li>
                 </ul>
             </nav>
         </section>

@@ -7,6 +7,10 @@
     grid-column: 1;
     grid-row: 1;
 
+    &__menu {
+        padding: 0 1rem;
+    }
+
     &__list {
         list-style: none;
     }
@@ -14,17 +18,32 @@
     &__item {
         color: $TEXT_PRIMARY;
 
+        font-weight: 400;
         text-transform: uppercase;
 
-        &_active {
-            color: $TEXT_THIRD;
+        &_indent {
+            margin-bottom: 0.8rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
     }
 
     &__link {
         color: inherit;
 
+        display: block;
+
+        height: 100%;
+        width: 100%;
+
         text-decoration: none;
+
+        &_active {
+            color: $PRIMARY;
+        }
+
         &:hover {
             text-decoration: underline;
         }

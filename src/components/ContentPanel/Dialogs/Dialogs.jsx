@@ -1,18 +1,20 @@
 import React from 'react';
 import Dialog from './Dialog/Dialog';
-// import s from 'Dialogs.module.scss';
+import s from './Dialogs.module.scss';
+import Message from './Message/Message';
 
 const Dialogs = () => {
     return (
-        <div>
-            Dialogs
-            <div>
-                <textarea name="comment" id="" cols="30" rows="10"></textarea>
-                <button>Add Dialog</button>
-            </div>
+        <div className={s.dialogs}>
+            <h2>Диалоги</h2>
+            <div className={s.dialogs__container}>
+                <div className={s.dialogs_items}>
+                    <Dialog />
+                </div>
 
-            <div>
-                <Dialog />
+                <div>
+                    <Message />
+                </div>
             </div>
         </div>
     )

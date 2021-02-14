@@ -1,12 +1,15 @@
 import React from 'react';
+import Wall from './Wall/Wall';
 import s from './Profile.module.scss';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 export default class Profile extends React.Component {
 
     render() {
         return <section className={s.profile__wrapper}>
-            <h2 className={s.profile__content}>Это панель навигации</h2>
+            <ProfileInfo />
+            <Wall />
         </section>
     }
 
-}
+} 
