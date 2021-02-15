@@ -7,8 +7,16 @@ export default class Wall extends React.Component {
         return (
             <div className={s.wall + ' ' + s.wall_indent}>
                 <h2>Wall</h2>
-                <textarea name="message" id="message" cols="30" rows="10" placeholder='Расскажите о чём-нибудь здесь...'></textarea>
-                <button type='submit'>Запостить</button>
+                <form action="#" className={s.wall__form}>
+                    <textarea
+                        className={s.wall__newMessage}
+                        name="message"
+                        id="message"
+                        placeholder='Расскажите о чём-нибудь здесь...' />
+                    <button className={s.wall__sentButton + ' ' + s.wall__sentButton_effect} type='submit'>
+                        <span>Запостить</span>
+                    </button>
+                </form>
             </div>)
     }
 

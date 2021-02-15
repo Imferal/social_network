@@ -1,5 +1,34 @@
+@import "./../../../../scss/mixins";
+@import "./../../../../scss/variables";
+
 .wall {
+    padding: 1rem;
     &_indent {
         margin-top: 35px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__newMessage {
+        height: 5rem;
+        width: 100%;
+
+        padding: 0.4rem;
+
+        resize: none;
+    }
+
+    &__sentButton {
+        @include buttonPrimary;
+
+        margin-top: 1rem;
+
+        &_effect {
+            @include buttonEffectLightReflection;
+        }
     }
 }
