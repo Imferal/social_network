@@ -1,8 +1,11 @@
 import React from 'react';
+import s from './Message.module.scss'
 
-const Message = () => {
+const Message = (props) => {
     return (
-        <p>Сообщение</p>
+        <div className={s.message}>
+            {props.messages}
+        </div>
     )
 }
 

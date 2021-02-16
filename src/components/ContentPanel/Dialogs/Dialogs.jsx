@@ -3,18 +3,51 @@ import Dialog from './Dialog/Dialog';
 import s from './Dialogs.module.scss';
 import Message from './Message/Message';
 
-const Dialogs = () => {
+const Dialogs = (props) => {
+    let dialogs =
+        props.dialogs
+            .map((e) => {
+                return (
+                    <p key={e.id}>{e.name}</p>
+                )
+            })
+
+    let messages =
+        props.messages
+            .map((e) => {
+                return (
+
+                    <p>{e.message}</p>
+
+                )
+            })
+
+    let onSendMessageClick = () => {
+        props.addMessage()
+    }
+
+    let onNewMessageChange = (e) => {
+        let text = e.target.value
+        props.updateNewMessageText(text)
+    }
+
     return (
         <div className={s.dialogs}>
             <h2>Диалоги</h2>
             <div className={s.dialogs__container}>
                 <div className={s.dialogs_items}>
-                    <Dialog />
+                    <Dialog dialogs={dialogs} />
                 </div>
 
                 <div>
-                    <Message />
+                    <Message messages={messages} />
                 </div>
+
+                <textarea
+                    value={props.newMessageText}
+                    onChange={onNewMessageChange}
+                    placeholder='Введите сообщение...'></textarea>
+                <button onClick={onSendMessageClick}>Отправить</button>
             </div>
         </div>
     )
