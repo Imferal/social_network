@@ -29,6 +29,7 @@ const profileReducer = (state = initialState, action) => {
                     ':' + today.getMinutes() +
                     ':' + today.getSeconds(),
             }
+
             state.posts.push(newPost)
             state.newPostText = ''
             return { ...state };

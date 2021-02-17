@@ -2,8 +2,13 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 const ADD_MESSAGE = 'ADD_MESSAGE';
 
 const initialState = {
-    dialogs: [{ id: 1, name: 'ВинниПух' }, { id: 2, name: 'Пятачок' }],
-    messages: [{ id: 1, message: 'Привет!' }, { id: 2, message: 'Здарова!' }],
+    dialogs: [
+        { id: 1, name: 'ВинниПух' }, { id: 2, name: 'Пятачок' }
+    ],
+    messages: [
+        { id: 1, message: 'Привет!', date: '17-2-2021 11:24:20' },
+        { id: 2, message: 'Здарова!', date: '17-2-2021 11:24:20' }
+    ],
     newMessageText: '',
 }
 
@@ -16,9 +21,22 @@ const dialogReducer = (state = initialState, action) => {
         }
 
         case ADD_MESSAGE: {
-            let newMessage = state.newMessageText;
+            let today = new Date();
+
+            let newMessage = {
+                id: state.messages.length + 1,
+                message: state.newMessageText,
+                date: '' +
+                    today.getDate() +
+                    '-' + parseInt(today.getMonth() + 1) +
+                    '-' + today.getFullYear() +
+                    ' ' + today.getHours() +
+                    ':' + today.getMinutes() +
+                    ':' + today.getSeconds(),
+            };
+
+            state.messages.push(newMessage);
             state.newMessageText = '';
-            state.messages.push({ id: 6, message: newMessage });
             return state
         }
 

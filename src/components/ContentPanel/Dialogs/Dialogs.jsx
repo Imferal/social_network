@@ -6,18 +6,18 @@ import Message from './Message/Message';
 const Dialogs = (props) => {
     let dialogs =
         props.dialogs
-            .map((e) => {
+            .map((e, i) => {
                 return (
-                    <p key={e.id}>{e.name}</p>
+                    <p key={i}>{e.name}</p>
                 )
             })
 
     let messages =
         props.messages
-            .map((e) => {
+            .map((e, i) => {
                 return (
 
-                    <p>{e.message}</p>
+                    <p key={i}>{e.message}</p>
 
                 )
             })
