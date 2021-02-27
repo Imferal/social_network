@@ -16,8 +16,10 @@ const Dialogs = (props) => {
         props.messages
             .map((e, i) => {
                 return (
-
-                    <p key={i}>{e.message}</p>
+                    <div key={i}>
+                        <span>{e.date}</span>
+                        <p>{e.message}</p>
+                    </div>
 
                 )
             })
@@ -42,13 +44,14 @@ const Dialogs = (props) => {
                 <div>
                     <Message messages={messages} />
                 </div>
-
-                <textarea
-                    value={props.newMessageText}
-                    onChange={onNewMessageChange}
-                    placeholder='Введите сообщение...'></textarea>
-                <button onClick={onSendMessageClick}>Отправить</button>
             </div>
+
+            <textarea
+                value={props.newMessageText}
+                onChange={onNewMessageChange}
+                placeholder='Введите сообщение...'>
+            </textarea>
+            <button onClick={onSendMessageClick}>Отправить</button>
         </div>
     )
 }

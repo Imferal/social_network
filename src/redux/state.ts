@@ -7,9 +7,12 @@ let reducers = combineReducers({
     dialog: dialogReducer,
 });
 
-let store = createStore(reducers);
-
-window.store = store;
-window.state = store.getState();
+let store : any = createStore(reducers);
 
 export default store;
+
+/*****************
+* Временный блок!*
+******************/
+declare global { interface Window { store:any; state:any; } }
+window.store = store;
