@@ -1,7 +1,11 @@
 import React from "react";
-import s from './Dialog.module.scss'
+import s from './Dialog.module.scss';
 
-const Dialog = (props) => {
+type Props = {
+    dialogs: Array<object>
+}
+
+const Dialog = (props: Props) => {
     return (
         <div className={s.dialog}>
             {props.dialogs}

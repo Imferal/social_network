@@ -2,74 +2,76 @@
 @import "./../../../../scss/variables";
 
 .wall {
-    padding: 1rem;
-    &_indent {
-        margin-top: 35px;
+  padding: 1rem;
+
+  &_indent {
+    margin-top: 35px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__newMessage {
+    height: 5rem;
+    width: 100%;
+
+    padding: 0.4rem;
+
+    resize: none;
+  }
+
+  &__sentButton {
+    @include buttonPrimary;
+
+    margin-top: 1rem;
+
+    &_effect {
+      @include buttonEffectLightReflection;
     }
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    &__newMessage {
-        height: 5rem;
-        width: 100%;
-
-        padding: 0.4rem;
-
-        resize: none;
-    }
-
-    &__sentButton {
-        @include buttonPrimary;
-
-        margin-top: 1rem;
-
-        &_effect {
-            @include buttonEffectLightReflection;
-        }
-    }
+  }
 }
 
 .post {
-    margin-top: 1rem;
-    background-color: $BACKGROUND_SECONDARY;
-    padding: 1rem;
+  margin-top: 1rem;
+  background-color: $BACKGROUND_SECONDARY;
+  padding: 1rem;
 
-    &__date {
-        display: block;
-        font-size: 0.8rem;
-        font-weight: 500;
-        padding: 0.5rem;
-        text-align: right;
+  &__date {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    text-align: right;
+  }
+
+  &__text {
+    border-top: 1px solid rgba($TEXT_SECONDARY, 0.4);
+
+    font-size: 1.4rem;
+
+    padding-top: 0.8rem;
+  }
+
+  &__likes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 300px;
+    padding: 1rem 0 0 2rem;
+
+    &::before {
+      content: "";
+      background-image: url("./../../../../img/profile/heart.png");
+
+      margin-left: -2rem;
+      height: 32px;
+      display: block;
+      width: 32px;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
-
-    &__text {
-        border-top: 1px solid rgba($TEXT_SECONDARY, 0.4);
-
-        font-size: 1.4rem;
-
-        padding-top: 0.8rem;
-    }
-
-    &__likes {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        font-weight: 300px;
-        padding: 1rem 0 0 2rem;
-        &::before {
-            content: "";
-            background-image: url("./../../../../img/profile/heart.png");
-
-            margin-left: -2rem;
-            height: 32px;
-            display: block;
-            width: 32px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-    }
+  }
 }

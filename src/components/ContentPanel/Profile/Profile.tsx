@@ -7,8 +7,8 @@ export default class Profile extends React.Component {
 
     render() {
         return <section className={s.profile__wrapper}>
-            <ProfileInfo />
-            <WallContainer />
+            <ProfileInfo/>
+            <WallContainer/>
         </section>
     }
 

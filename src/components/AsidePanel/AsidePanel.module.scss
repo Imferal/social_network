@@ -2,12 +2,12 @@
 @import "./../../scss/variables";
 
 .asidePanel__wrapper {
-    @include panel;
+  @include panel;
 
-    grid-column: 3;
-    grid-row: 1;
+  grid-column: 3;
+  grid-row: 1;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

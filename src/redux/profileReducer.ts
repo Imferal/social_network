@@ -1,28 +1,20 @@
+import {PostType} from "../types/types";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
-export type InitialStateType = {
-    newPostText: string,
-    posts: Array<NewPostType>
-}
+export type InitialStateType = typeof initialState
 
-type NewPostType = {
-    id: number,
-    message: string,
-    likesCount: number,
-    date: string,
-}
 
-const initialState: InitialStateType = {
-    newPostText: '',
-    posts: []
+const initialState = {
+    newPostText: '' as string,
+    posts: [] as Array<PostType>
 }
 
 const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
 
         case UPDATE_NEW_POST_TEXT: {
-            // state.newPostText = action.text
             return {...state, newPostText: action.text};
         }
 
@@ -30,7 +22,7 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
             let today = new Date();
             let month = today.getMonth();
 
-            let newPost: NewPostType = {
+            let newPost: PostType = {
                 id: state.posts.length + 1,
                 message: state.newPostText,
                 likesCount: 0,
@@ -43,9 +35,8 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
                     ':' + today.getSeconds(),
             }
 
-            state.posts.push(newPost)
             state.newPostText = ''
-            return {...state, posts: []};
+            return {...state, posts: [...state.posts, newPost]};
         }
 
         default:

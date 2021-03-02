@@ -1,18 +1,21 @@
-import { combineReducers, createStore } from 'redux';
+import {combineReducers, createStore} from 'redux';
 import dialogReducer from './dialogReducer';
 import profileReducer from './profileReducer';
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     profile: profileReducer,
     dialog: dialogReducer,
 });
 
-let store : any = createStore(reducers);
+type RootReducerType = typeof rootReducer
+export type AppStateType = ReturnType<RootReducerType>
 
-export default store;
+let store: any = createStore(rootReducer);
+
+export default store
 
 /*****************
-* Временный блок!*
-******************/
-declare global { interface Window { store:any; state:any; } }
-window.store = store;
+ * Временный блок!*
+ ******************/
+// @ts-ignore
+window.store = store

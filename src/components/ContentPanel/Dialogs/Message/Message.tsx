@@ -1,7 +1,11 @@
 import React from 'react';
 import s from './Message.module.scss'
 
-const Message = (props) => {
+type PropsType = {
+    messages: Array<object>
+}
+
+const Message = (props: PropsType) => {
     return (
         <div className={s.message}>
             {props.messages}

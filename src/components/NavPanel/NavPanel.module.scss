@@ -2,50 +2,50 @@
 @import "./../../scss/variables";
 
 .navPanel {
-    @include panel;
+  @include panel;
 
-    grid-column: 1;
-    grid-row: 1;
+  grid-column: 1;
+  grid-row: 1;
 
-    &__menu {
-        padding: 0 1rem;
+  &__menu {
+    padding: 0 1rem;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    color: $TEXT_PRIMARY;
+
+    font-weight: 400;
+    text-transform: uppercase;
+
+    &_indent {
+      margin-bottom: 0.8rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__link {
+    color: inherit;
+
+    display: block;
+
+    height: 100%;
+    width: 100%;
+
+    text-decoration: none;
+
+    &_active {
+      color: $PRIMARY;
     }
 
-    &__list {
-        list-style: none;
+    &:hover {
+      text-decoration: underline;
     }
-
-    &__item {
-        color: $TEXT_PRIMARY;
-
-        font-weight: 400;
-        text-transform: uppercase;
-
-        &_indent {
-            margin-bottom: 0.8rem;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
-
-    &__link {
-        color: inherit;
-
-        display: block;
-
-        height: 100%;
-        width: 100%;
-
-        text-decoration: none;
-
-        &_active {
-            color: $PRIMARY;
-        }
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+  }
 }

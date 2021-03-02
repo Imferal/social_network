@@ -2,33 +2,35 @@ import React from 'react';
 import Dialog from './Dialog/Dialog';
 import s from './Dialogs.module.scss';
 import Message from './Message/Message';
+import {DialogType, MessageType} from "../../../types/types";
 
-const Dialogs = (props) => {
-    let dialogs =
-        props.dialogs
-            .map((e, i) => {
-                return (
-                    <p key={i}>{e.name}</p>
-                )
-            })
+type Props = {
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+    newMessageText: string
+    addMessage: () => void
+    updateNewMessageText: (text: string) => void
+}
 
-    let messages =
-        props.messages
-            .map((e, i) => {
-                return (
-                    <div key={i}>
-                        <span>{e.date}</span>
-                        <p>{e.message}</p>
-                    </div>
+const Dialogs = (props: Props) => {
+    let jsxDialogs = props.dialogs.map((e, i) => {
+        return <p key={i}>{e.name}</p>
+    })
 
-                )
-            })
+    let jsxMessages = props.messages.map((e, i) => {
+        return (
+            <div key={i}>
+                <span>{e.date}</span>
+                <p>{e.message}</p>
+            </div>
+        )
+    })
 
     let onSendMessageClick = () => {
         props.addMessage()
     }
 
-    let onNewMessageChange = (e) => {
+    let onNewMessageChange = (e: any) => {
         let text = e.target.value
         props.updateNewMessageText(text)
     }
@@ -38,11 +40,11 @@ const Dialogs = (props) => {
             <h2>Диалоги</h2>
             <div className={s.dialogs__container}>
                 <div className={s.dialogs_items}>
-                    <Dialog dialogs={dialogs} />
+                    <Dialog dialogs={jsxDialogs}/>
                 </div>
 
                 <div>
-                    <Message messages={messages} />
+                    <Message messages={jsxMessages}/>
                 </div>
             </div>
 
