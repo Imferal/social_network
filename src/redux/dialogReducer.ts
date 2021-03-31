@@ -16,46 +16,49 @@ const initialState = {
     newMessageText: '' as string,
 }
 
-const dialogReducer = (state: InitialStateType = initialState, action: any) => {
-    switch (action.type) {
-
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            state.newMessageText = action.text
-            return state
+const dialogReducer =
+    (state = initialState, action: any): InitialStateType => {
+        switch (action.type) {
+            case UPDATE_NEW_MESSAGE_TEXT: {
+                return {
+                    ...state,
+                    newMessageText: action.text
+                }
+            }
+            case ADD_MESSAGE: {
+                let today = new Date();
+                let month = today.getMonth();
+                let newMessage = {
+                    id: state.messages.length + 1,
+                    message: state.newMessageText,
+                    date: '' +
+                        today.getDate() +
+                        '-' + ++month +
+                        '-' + today.getFullYear() +
+                        ' ' + today.getHours() +
+                        ':' + today.getMinutes() +
+                        ':' + today.getSeconds(),
+                };
+                return {
+                    ...state,
+                    messages: [...state.messages, newMessage],
+                    newMessageText: ''
+                }
+            }
+            default:
+                return state
         }
-
-        case ADD_MESSAGE: {
-            let today = new Date();
-            let month = today.getMonth();
-
-            let newMessage = {
-                id: state.messages.length + 1,
-                message: state.newMessageText,
-                date: '' +
-                    today.getDate() +
-                    '-' + ++month +
-                    '-' + today.getFullYear() +
-                    ' ' + today.getHours() +
-                    ':' + today.getMinutes() +
-                    ':' + today.getSeconds(),
-            };
-
-            state.messages.push(newMessage);
-            state.newMessageText = '';
-            return state
-        }
-
-        default:
-            return state
     }
-}
 
 type UpdateNewMessageTextActionType = {
     type: typeof UPDATE_NEW_MESSAGE_TEXT,
     text: string
 }
 export const updateNewMessageText = (text: string): UpdateNewMessageTextActionType =>
-    ({type: UPDATE_NEW_MESSAGE_TEXT, text})
+    ({
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        text
+    })
 
 type AddMessageActionType = {
     type: typeof ADD_MESSAGE

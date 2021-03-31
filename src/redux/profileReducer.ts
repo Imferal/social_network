@@ -3,46 +3,50 @@ import {PostType} from "../types/types";
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
-export type InitialStateType = typeof initialState
-
-
-const initialState = {
-    newPostText: '' as string,
-    posts: [] as Array<PostType>
+export type InitialStateType = {
+    newPostText: string,
+    posts: Array<PostType>,
 }
 
-const profileReducer = (state = initialState, action: any): InitialStateType => {
-    switch (action.type) {
+const initialState: InitialStateType = {
+    newPostText: '',
+    posts: [],
+}
 
-        case UPDATE_NEW_POST_TEXT: {
-            return {...state, newPostText: action.text};
-        }
+const profileReducer =
+    (state = initialState, action: any): InitialStateType => {
+        switch (action.type) {
 
-        case ADD_POST: {
-            let today = new Date();
-            let month = today.getMonth();
-
-            let newPost: PostType = {
-                id: state.posts.length + 1,
-                message: state.newPostText,
-                likesCount: 0,
-                date: '' +
-                    today.getDate() +
-                    '-' + ++month +
-                    '-' + today.getFullYear() +
-                    ' ' + today.getHours() +
-                    ':' + today.getMinutes() +
-                    ':' + today.getSeconds(),
+            case UPDATE_NEW_POST_TEXT: {
+                return {...state, newPostText: action.text};
             }
 
-            state.newPostText = ''
-            return {...state, posts: [...state.posts, newPost]};
-        }
+            case ADD_POST: {
+                let today = new Date();
+                let month = today.getMonth();
+                let newPost: PostType = {
+                    id: state.posts.length + 1,
+                    message: state.newPostText,
+                    likesCount: 0,
+                    date: '' +
+                        today.getDate() +
+                        '-' + ++month +
+                        '-' + today.getFullYear() +
+                        ' ' + today.getHours() +
+                        ':' + today.getMinutes() +
+                        ':' + today.getSeconds(),
+                }
+                return {
+                    ...state,
+                    posts: [...state.posts, newPost],
+                    newPostText: ''
+                };
+            }
 
-        default:
-            return {...state};
+            default:
+                return state;
+        }
     }
-}
 
 type AddPostActionType = {
     type: typeof ADD_POST,
@@ -57,4 +61,3 @@ export const updateNewPostText = (text: string): UpdateNewPostTextActionType =>
     ({type: UPDATE_NEW_POST_TEXT, text})
 
 export default profileReducer
-
