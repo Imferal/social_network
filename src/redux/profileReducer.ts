@@ -3,18 +3,18 @@ import {PostType} from "../types/types";
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
-export type InitialStateType = {
+export type profileInitialStateType = {
     newPostText: string,
     posts: Array<PostType>,
 }
 
-const initialState: InitialStateType = {
+const initialState: profileInitialStateType = {
     newPostText: '',
     posts: [],
 }
 
 const profileReducer =
-    (state = initialState, action: any): InitialStateType => {
+    (state = initialState, action: any): profileInitialStateType => {
         switch (action.type) {
 
             case UPDATE_NEW_POST_TEXT: {

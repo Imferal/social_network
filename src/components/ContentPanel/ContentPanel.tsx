@@ -1,9 +1,9 @@
 import * as React from 'react';
 import s from './ContentPanel.module.scss';
 import DialogsContainer from './Dialogs/DialogsContainer';
-import Users from "../Users/Users";
 import {Redirect, Route, Switch} from "react-router-dom";
 import Profile from "./Profile/Profile";
+import UsersContainer from "./Users/UsersContainer";
 
 export default class ContentPanel extends React.Component {
 
@@ -12,7 +12,7 @@ export default class ContentPanel extends React.Component {
             <Switch>
                 <Route path='/dialogs' component={DialogsContainer}/>
                 <Route path='/profile' component={Profile}/>
-                <Route path='/users' component={Users}/>
+                <Route path='/users' component={UsersContainer}/>
                 <Route render={() => <Redirect to="/profile"/>}/>
             </Switch>
         </section>

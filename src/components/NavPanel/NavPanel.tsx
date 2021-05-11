@@ -19,9 +19,9 @@ export default function NavPanel() {
     <h2>Навигация</h2>
     <nav className={s.navPanel__menu}>
       <ul className={s.navPanel__list}>
-        {menu.map((el) => {
+        {menu.map((el, i) => {
             return (
-              <li className={`${s.navPanel__item} ${s.navPanel__item_indent}`}>
+              <li key={i} className={`${s.navPanel__item} ${s.navPanel__item_indent}`}>
                 <NavLink className={s.navPanel__link} to={el.uri}
                          activeClassName={s.navPanel__link_active}>{el.text}</NavLink>
               </li>
