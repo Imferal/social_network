@@ -5,13 +5,13 @@ import s from './NavPanel.module.scss';
 export default function NavPanel() {
 
   let menu = [{
-    uri: 'profile',
+    uri: '/profile',
     text: 'Профиль',
   }, {
-    uri: 'dialogs',
+    uri: '/dialogs',
     text: 'Диалоги'
   }, {
-    uri: 'users',
+    uri: '/users',
     text: 'Пользователи'
   }]
 

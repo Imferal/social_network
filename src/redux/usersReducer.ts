@@ -5,12 +5,14 @@ const UNFOLLOW_USER = 'UNFOLLOW_USER'
 const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
+const SET_FETCHING_STATUS = 'SET_FETCHING_STATUS'
 
 export type usersInitialStateType = {
   users: Array<UserType>,
   totalUsersCount: number,
   currentPage: number,
   pageSize: number,
+  isFetching: boolean,
 }
 
 const initialState: usersInitialStateType = {
@@ -18,6 +20,7 @@ const initialState: usersInitialStateType = {
   totalUsersCount: 0,
   currentPage: 1,
   pageSize: 50,
+  isFetching: false,
 }
 
 const usersReducer =
@@ -51,6 +54,11 @@ const usersReducer =
         }
       }
 
+      // Переключаем статус загрузки (грузится/не грузится)
+      case SET_FETCHING_STATUS: {
+        return {...state, isFetching: action.isFetching}
+      }
+
       // Меняем активную страницу
       case SET_CURRENT_PAGE: {
         return {...state, currentPage: action.page}
@@ -62,38 +70,43 @@ const usersReducer =
       }
 
       // Добавляем общее число пользователей
-        case SET_TOTAL_COUNT: {
-          return {...state, totalUsersCount: action.totalCount}
-        }
+      case SET_TOTAL_COUNT: {
+        return {...state, totalUsersCount: action.totalCount}
+      }
 
       default:
         return state;
-      }
     }
+  }
 
-    export default usersReducer
+export default usersReducer
 
-    type followUserActionType = { type: typeof FOLLOW_USER, id: number }
-    export const followUser = (id: number): followUserActionType => (
-      {type: FOLLOW_USER, id}
-    )
+type followUserActionType = { type: typeof FOLLOW_USER, id: number }
+export const followUser = (id: number): followUserActionType => (
+  {type: FOLLOW_USER, id}
+)
 
-    type unFollowUserActionType = { type: typeof UNFOLLOW_USER, id: number }
-    export const unFollowUser = (id: number): unFollowUserActionType => (
-      {type: UNFOLLOW_USER, id}
-    )
+type unFollowUserActionType = { type: typeof UNFOLLOW_USER, id: number }
+export const unFollowUser = (id: number): unFollowUserActionType => (
+  {type: UNFOLLOW_USER, id}
+)
 
-    type setCurrentPageActionType = { type: typeof SET_CURRENT_PAGE, page: number }
-    export const setCurrentPage = (page: number): setCurrentPageActionType => (
-      {type: SET_CURRENT_PAGE, page}
-    )
+type setCurrentPageActionType = { type: typeof SET_CURRENT_PAGE, page: number }
+export const setCurrentPage = (page: number): setCurrentPageActionType => (
+  {type: SET_CURRENT_PAGE, page}
+)
 
-    type setUsersActionType = { type: typeof SET_USERS, users: Array<UserType> }
-    export const setUsers = (users: Array<UserType>): setUsersActionType => (
-      {type: SET_USERS, users}
-    )
+type setUsersActionType = { type: typeof SET_USERS, users: Array<UserType> }
+export const setUsers = (users: Array<UserType>): setUsersActionType => (
+  {type: SET_USERS, users}
+)
 
 type setTotalCountActionType = { type: typeof SET_TOTAL_COUNT, totalCount: number }
-    export const setTotalCount = (totalCount: number): setTotalCountActionType => (
-      {type: SET_TOTAL_COUNT, totalCount}
-    )
+export const setTotalCount = (totalCount: number): setTotalCountActionType => (
+  {type: SET_TOTAL_COUNT, totalCount}
+)
+
+type setFetchingStatusActionType = { type: typeof SET_FETCHING_STATUS, isFetching: boolean }
+export const setFetchingStatus = (isFetching: boolean): setFetchingStatusActionType => (
+  {type: SET_FETCHING_STATUS, isFetching}
+)

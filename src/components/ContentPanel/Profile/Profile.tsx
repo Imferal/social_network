@@ -1,15 +1,16 @@
 import React from 'react';
 import WallContainer from './Wall/WallContainer';
 import s from './Profile.module.scss';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfileInfoContainer from './ProfileInfo/ProfileInfoContainer';
 
-export default class Profile extends React.Component {
+const Profile = () => {
 
-    render() {
-        return <section className={s.profile__wrapper}>
-            <ProfileInfo/>
-            <WallContainer/>
-        </section>
-    }
+  return (
+    <section className={s.profile__wrapper}>
+      <ProfileInfoContainer/>
+      <WallContainer/>
+    </section>
+  )
+}
 
-} 
+export default Profile
